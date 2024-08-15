@@ -1,20 +1,16 @@
-
-import React, { useState, useEffect } from 'react';
+App.jsx
+   
+import React from 'react';
+import './App.css';
+import Main from './main'; // Import Main component
 
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/message')
-      .then((response) => response.json())
-      .then((data) => setMessage(data.message));
-  }, []);
-
-  return (
-    <div>
-      <h1>{message}</h1>
-    </div>
-  );
+  return (
+    <div className="container">
+      {/* Render Main component */}
+      <Main />
+    </div>
+  );
 }
 
-export default App;
+export default App;   
