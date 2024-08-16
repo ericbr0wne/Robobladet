@@ -1,16 +1,15 @@
-App.jsx
-   
-import React from 'react';
-import './App.css';
-import Main from './main'; // Import Main component
+App.jsx;
+
+import React from "react";
+import "./App.css";
+import Main from "./main";
 
 function App() {
-  return (
-    <div className="container">
-      {/* Render Main component */}
-      <Main />
-    </div>
-  );
+  return (
+    <div className="container">
+      <Main />
+    </div>
+  );
 }
 
-export default App;   
+export default App;
