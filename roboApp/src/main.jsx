@@ -22,21 +22,3 @@ const Main = () => {
   );
 };
 export default Main;
-
-/*
-import React from "react"; // Keep this only once at the top
-import ArticleList from "./components/ArticleList.jsx";
-import Header from "./components/Header";
-
-
-const Main = () => {
-  return (
-    <div>
-      <Header />
-      <ArticleList /> {}
-    </div>
-  );
-};
-
-export default Main;
-*/

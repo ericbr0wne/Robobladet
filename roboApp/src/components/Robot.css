@@ -1,0 +1,110 @@
+.robot-container {
+    position: fixed;
+    bottom: 22px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s;
+    z-index: 1001;
+}
+
+.robot {
+    width: 150px;
+    height: 150px;
+    background-image: url('../assets/2.png');
+    /* Använd din bildväg här */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.scrolling-text {
+    color: white;
+    background-color: transparent;
+    font-size: 16px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    animation: scroll-text 10s linear infinite;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.chat-bubbles {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+    z-index: 1002;
+}
+
+.chat-bubbles.show {
+    display: flex;
+    /* Show chat bubbles */
+}
+
+.chat-bubble {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    z-index: 1003;
+}
+
+.chat-bubble:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.minimized-robot {
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/robot_PNG40.png');
+    /* Använd din bildväg här */
+    background-color: orange;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    bottom: 22px;
+    left: 20px;
+    transition: all 0.3s;
+    z-index: 1001;
+}
+
+.robot.minimized {
+    display: none;
+}
+
+.backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.backdrop.active {
+    display: block;
+}
