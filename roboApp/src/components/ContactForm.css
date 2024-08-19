@@ -1,9 +1,5 @@
-.color{
-  color: #000;
-}
 div#contactContainer {
   background-color: #fff;
-  color: #000;
   border-radius: 5px;
   min-height: 600px;
   padding: 20px;
@@ -13,6 +9,11 @@ div#contactContainer {
   align-items: center;
   box-shadow: 0px 0px 18px #4169e1;
   overflow: hidden;
+}
+
+/*needed to make a separate rule for the color to change -_-*/
+div#contactContainer * {
+  color: #000;
 }
 
 div#contactText {
