@@ -1,0 +1,78 @@
+.color{
+  color: #000;
+}
+div#contactContainer {
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+  min-height: 600px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px 0px 18px #4169e1;
+  overflow: hidden;
+}
+
+div#contactText {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+form#contactForm {
+  background-color: #ededf1;
+  border-radius: 5px;
+  min-width: 50%;
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h2#contactFormH2 {
+  color: #787878;
+}
+
+/*Instead of listing several types, one common (contactInput) class is used for input/button*/
+.contactInput,
+select#subject,
+input#submitButton {
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #90a1ca;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  resize: vertical;
+  outline: none;
+  resize: none; /*stopping user to resize textarea, scroll is added instead*/
+}
+
+input#submitButton {
+  background-color: #fff600;
+  border-color: #e6e04b;
+  width: 50%;
+}
+
+input#submitButton:hover {
+  background-color: #e6e04b;
+}
+
+.contactInput:focus,
+select#subject:focus {
+  border-color: #4169e1;
+}
+
+select#subject,
+input#submitButton {
+  cursor: pointer;
+}
+
+img#contactImg {
+  width: 100%;
+}
