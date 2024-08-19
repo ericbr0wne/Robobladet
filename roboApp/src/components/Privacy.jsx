@@ -1,12 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Privacy = () => {
-    console.log("Privacy component loaded");
     return (
-        <div>
-            <h1>Privacy Policy</h1>
-            <p>Hellu privacy!.</p>
-        </div>
+        <ul>
+            <li><Link to="/">Homepage</Link></li>
+        </ul>
     );
 };
 
