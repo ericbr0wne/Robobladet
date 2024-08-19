@@ -12,6 +12,7 @@ const Privacy = () => {
       <li>
         <Link to="/">Homepage</Link>
       </li>
+      <h1>Contact us</h1>
       <div>
         <ContactForm />
       </div>
