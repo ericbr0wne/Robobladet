@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/ContactForm.css";
+import emailRobot from '../assets/email-robot.png';
 
 const ContactForm = () => {
   const handleSubmit = async (event) => {
@@ -21,7 +22,6 @@ const ContactForm = () => {
 
   return (
     <div id="contactContainer">
-      <h1>Contact us</h1>
       <div id="contactText">
         <h2>Got any questions?</h2>
         <p>Do not hesitate to contact us!</p>
@@ -30,11 +30,7 @@ const ContactForm = () => {
           <a href="mailto:info@robobladet.com">info@robobladet.com</a>
         </p>
         <div>
-          <img
-            id="contactImg"
-            src={"../assets/email-robot.png"}
-            alt="Robot holding an email logo"
-          />
+          <img id="contactImg" src={emailRobot} alt="Robot holding an email logo"/>
         </div>
       </div>
       <form id="contactForm" onSubmit={handleSubmit}>
