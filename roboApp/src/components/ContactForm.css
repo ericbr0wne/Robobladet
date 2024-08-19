@@ -16,6 +16,10 @@ div#contactContainer * {
   color: #000;
 }
 
+a#email {
+  color: #4169e1
+}
+
 div#contactText {
   flex: 1;
   margin-bottom: 10px;

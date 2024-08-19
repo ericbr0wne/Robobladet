@@ -27,7 +27,7 @@ const ContactForm = () => {
         <p>Do not hesitate to contact us!</p>
         <p>
           Fill in the contact form or just send us an email to{" "}
-          <a href="mailto:info@robobladet.com">info@robobladet.com</a>
+          <a id="email" href="mailto:info@robobladet.com">info@robobladet.com</a>
         </p>
         <div>
           <img id="contactImg" src={emailRobot} alt="Robot holding an email logo"/>
