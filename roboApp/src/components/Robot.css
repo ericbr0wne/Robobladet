@@ -10,8 +10,8 @@
 }
 
 .robot {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     background-image: url('../assets/2.png');
     /* Använd din bildväg här */
     background-size: contain;
@@ -25,14 +25,21 @@
     color: white;
     background-color: transparent;
     font-size: 16px;
-    margin-bottom: 10px;
     white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    bottom: 180px;
+    /* Justera detta för att passa positionen ovanför roboten */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    /* Samma som robotens bredd för att hålla sig inom gränserna */
     animation: scroll-text 10s linear infinite;
 }
 
 @keyframes scroll-text {
     0% {
-        transform: translateX(100%);
+        transform: translateX(15%);
     }
 
     100% {
@@ -54,14 +61,13 @@
 
 .chat-bubbles.show {
     display: flex;
-    /* Show chat bubbles */
 }
 
 .chat-bubble {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 10px 15px;
-    border-radius: 15px;
+    padding: 10px 20px;
+    border-radius: 35px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s;
@@ -69,15 +75,13 @@
 }
 
 .chat-bubble:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(15, 13, 13, 0.438);
 }
 
 .minimized-robot {
-    width: 30px;
-    height: 30px;
+    width: 100px;
+    height: 100px;
     background-image: url('../assets/robot_PNG40.png');
-    /* Använd din bildväg här */
-    background-color: orange;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -85,7 +89,6 @@
     cursor: pointer;
     position: fixed;
     bottom: 22px;
-    left: 20px;
     transition: all 0.3s;
     z-index: 1001;
 }
@@ -93,6 +96,40 @@
 .robot.minimized {
     display: none;
 }
+
+@keyframes slideIn {
+    0% {
+        left: -100px;
+        /* Start position, out of screen */
+    }
+
+    100% {
+        left: -2%;
+        /* End position, visible */
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        left: -2%;
+        /* Start position, visible */
+    }
+
+    100% {
+        left: -100px;
+        /* End position, out of screen */
+    }
+}
+
+.minimized-robot.animate-in {
+    animation: slideIn 2s forwards;
+}
+
+.minimized-robot.animate-out {
+    animation: slideOut 2s forwards;
+}
+
+
 
 .backdrop {
     display: none;

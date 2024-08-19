@@ -4,6 +4,7 @@ import './Robot.css';
 const MrRobotic = () => {
     const [isChatVisible, setIsChatVisible] = useState(false);
     const [isRobotMinimized, setIsRobotMinimized] = useState(false);
+    const [animationState, setAnimationState] = useState('');
 
     useEffect(() => {
         const minimized = localStorage.getItem('robotMinimized') === 'true';
@@ -12,6 +13,25 @@ const MrRobotic = () => {
 
     useEffect(() => {
         localStorage.setItem('robotMinimized', isRobotMinimized.toString());
+    }, [isRobotMinimized]);
+
+    useEffect(() => {
+        if (isRobotMinimized) {
+            const startAnimation = () => {
+                setAnimationState('animate-in');
+
+                // Efter att roboten har glidit in, vänta 10 sekunder och sedan börja animera ut
+                setTimeout(() => {
+                    setAnimationState('animate-out');
+
+
+                    setTimeout(startAnimation, 5000);
+                }, 10000);
+            };
+
+
+            startAnimation();
+        }
     }, [isRobotMinimized]);
 
     const minimizeRobot = () => {
@@ -60,20 +80,21 @@ const MrRobotic = () => {
             {isRobotMinimized && (
                 <div
                     id="minimized-robot"
-                    className="minimized-robot"
+                    className={`minimized-robot ${animationState}`}
                     onClick={restoreRobot}
                 >
                 </div>
             )}
 
+            {/* Denna gör så jag kan dämpa bakgrunden när jag klickar på roboten */}
             {isChatVisible && (
-                <div id="backdrop" className="backdrop" onClick={() => setIsChatVisible(false)}>
-                    {"Vad är detta????"}
+                <div id="backdrop" className={`backdrop ${isChatVisible ? 'active' : ''}`} onClick={() => setIsChatVisible(false)}>
                 </div>
             )}
 
-            <div id="scrolling-text" style={{ display: isRobotMinimized ? 'none' : 'block' }}>
-                {"Hej behöver du hjälp?"}
+            {/* Detta är scroll texten */}
+            <div id="scrolling-text" className="scrolling-text" style={{ display: isRobotMinimized ? 'none' : 'block' }}>
+                {"Need help?"}
             </div>
         </div>
     );
