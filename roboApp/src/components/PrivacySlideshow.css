@@ -1,0 +1,36 @@
+div#slideshow-container {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+  }
+  
+  div.slides {
+    display: none;
+  }
+  
+  img.slideshow {
+    vertical-align: middle;
+    width: 100%;
+    max-height: 500px;
+    border-radius: 5px;
+  }
+  
+  /*Indicators on which slide is active*/
+  .bullet {
+    height: 4px;
+    width: 15px;
+    margin-right: 4px;
+    background-color: #90a1ca;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #4169e1;
+  }
+  
+  div#bullets {
+    text-align: center;
+    margin-bottom: 20px;
+  }
