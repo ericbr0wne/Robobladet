@@ -5,7 +5,6 @@ const port = 3000;
 
 app.use(cors());
 
-// Hard-coded articles data with `img` property
 const articles = [
   {
     title: "Inte klart med ersättare för Ribbenvik",

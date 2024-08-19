@@ -1,17 +1,18 @@
-App.jsx;
-
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./main";
-import Privacy from "./components/Privacypage";
+import Privacy from "./components/Privacy";
 
 function App() {
   return (
     <Router>
-      <Route path="/" element={<Main />} />
-      <Route path="/privacy" element={<Privacy />} />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/privacy" element={<Privacy />} />
+      </Routes>
     </Router>
+
   );
 }
 
