@@ -1,0 +1,147 @@
+.robot-container {
+    position: fixed;
+    bottom: 22px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s;
+    z-index: 1001;
+}
+
+.robot {
+    width: 160px;
+    height: 160px;
+    background-image: url('../assets/2.png');
+    /* Använd din bildväg här */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.scrolling-text {
+    color: white;
+    background-color: transparent;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    bottom: 180px;
+    /* Justera detta för att passa positionen ovanför roboten */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    /* Samma som robotens bredd för att hålla sig inom gränserna */
+    animation: scroll-text 10s linear infinite;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(15%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.chat-bubbles {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+    z-index: 1002;
+}
+
+.chat-bubbles.show {
+    display: flex;
+}
+
+.chat-bubble {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 35px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    z-index: 1003;
+}
+
+.chat-bubble:hover {
+    background-color: rgba(15, 13, 13, 0.438);
+}
+
+.minimized-robot {
+    width: 100px;
+    height: 100px;
+    background-image: url('../assets/robot_PNG40.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    bottom: 22px;
+    transition: all 0.3s;
+    z-index: 1001;
+}
+
+.robot.minimized {
+    display: none;
+}
+
+@keyframes slideIn {
+    0% {
+        left: -100px;
+        /* Start position, out of screen */
+    }
+
+    100% {
+        left: -2%;
+        /* End position, visible */
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        left: -2%;
+        /* Start position, visible */
+    }
+
+    100% {
+        left: -100px;
+        /* End position, out of screen */
+    }
+}
+
+.minimized-robot.animate-in {
+    animation: slideIn 2s forwards;
+}
+
+.minimized-robot.animate-out {
+    animation: slideOut 2s forwards;
+}
+
+
+
+.backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.backdrop.active {
+    display: block;
+}
