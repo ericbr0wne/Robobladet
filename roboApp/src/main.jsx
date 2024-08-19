@@ -1,10 +1,10 @@
-import React from "react"; // Keep this only once at the top
+import React from "react";
+import Header from "./components/Header";
+import ArticleList from "./components/ArticleList";
+import App from "./App";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
-import ArticleList from "./components/ArticleList.jsx";
-import Header from "./components/Header";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,12 +13,30 @@ createRoot(document.getElementById("root")).render(
 );
 
 const Main = () => {
+  console.log("Main component loaded");
   return (
     <div>
       <Header />
-      <ArticleList /> {/* This should render the articles */}
+      <ArticleList />
+    </div>
+  );
+};
+export default Main;
+
+/*
+import React from "react"; // Keep this only once at the top
+import ArticleList from "./components/ArticleList.jsx";
+import Header from "./components/Header";
+
+
+const Main = () => {
+  return (
+    <div>
+      <Header />
+      <ArticleList /> {}
     </div>
   );
 };
 
 export default Main;
+*/

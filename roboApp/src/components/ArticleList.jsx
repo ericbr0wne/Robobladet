@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ArticleList.css";
 
 const ArticleList = () => {
+  console.log("Article component loaded");
   const [articles, setArticles] = useState([]);
   const [sortBy, setSortBy] = useState("newest");
 
