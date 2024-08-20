@@ -9,12 +9,6 @@ const Privacy = () => {
   return (
     <ul>
       <div>
-        <Header />
-      </div>
-      <li>
-        <Link to="/">Homepage</Link>
-      </li>
-      <div>
         <PrivacySlideshow />
       </div>
       <h1>Contact us</h1>
