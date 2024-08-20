@@ -11,10 +11,6 @@ const Privacy = () => {
       <div>
         <PrivacySlideshow />
       </div>
-      <h1>Contact us</h1>
-      <div>
-        <ContactForm />
-      </div>
     </ul>
   );
 };
