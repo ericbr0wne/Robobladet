@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/ContactForm.css";
-import emailRobot from '../assets/email-robot.png';
+import emailRobot from "../assets/email-robot.png";
 
 const ContactForm = () => {
   const handleSubmit = async (event) => {
@@ -27,10 +27,16 @@ const ContactForm = () => {
         <p>Do not hesitate to contact us!</p>
         <p>
           Fill in the contact form or just send us an email to{" "}
-          <a id="email" href="mailto:info@robobladet.com">info@robobladet.com</a>
+          <a id="email" href="mailto:info@robobladet.com">
+            info@robobladet.com
+          </a>
         </p>
         <div>
-          <img id="contactImg" src={emailRobot} alt="Robot holding an email logo"/>
+          <img
+            id="contactImg"
+            src={emailRobot}
+            alt="Robot holding an email logo"
+          />
         </div>
       </div>
       <form id="contactForm" onSubmit={handleSubmit}>
@@ -40,7 +46,6 @@ const ContactForm = () => {
           type="text"
           className="contactInput"
           name="fName"
-          placeholder="First name"
           required
         />
         <label htmlFor="lName">Last name:</label>
@@ -48,14 +53,12 @@ const ContactForm = () => {
           type="text"
           className="contactInput"
           name="lName"
-          placeholder="Last name"
         />
         <label htmlFor="email">Email:</label>
         <input
           type="email"
           className="contactInput"
           name="email"
-          placeholder="Email"
           required
         />
         <label htmlFor="subject">Subject:</label>
@@ -70,7 +73,6 @@ const ContactForm = () => {
           className="contactInput"
           name="message"
           rows="4"
-          placeholder="Write your message.."
           required
         ></textarea>
         <input id="submitButton" type="submit" value="Submit" />
