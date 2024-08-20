@@ -47,7 +47,8 @@ const ArticleList = () => {
         </select>
       </div>
       <div className="articles">
-        {articles.map((article) => (
+      {articles.length > 0 ? (
+        articles.map((article) => (
           <div
             className="article-card"
             key={article.title}
@@ -57,7 +58,10 @@ const ArticleList = () => {
             <p><Highlight text={article.summary} searchTerm={searchQuery} /></p> 
             <a href={article.link}>Read more</a>
           </div>
-        ))}
+        ))
+          ) : (
+            <p>Inga artiklar hittades...</p> // Visa meddelande om inga artiklar hittas
+          )}
       </div>
     </div>
   );
