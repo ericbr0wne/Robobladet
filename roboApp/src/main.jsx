@@ -1,9 +1,7 @@
 import React from "react";
-import Header from "./components/Header";
-import ArticleList from "./components/ArticleList";
-import App from "./App";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import App from "./App";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
@@ -11,14 +9,3 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>
 );
-
-const Main = () => {
-  console.log("Main component loaded");
-  return (
-    <div>
-      <Header />
-      <ArticleList />
-    </div>
-  );
-};
-export default Main;

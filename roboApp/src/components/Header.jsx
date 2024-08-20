@@ -7,9 +7,6 @@ const Header = () => {
     <header>
       <div id="header-logo">
         <img src={logo} alt="Robobladets Logotyp" />
-        <ul>
-          <li><Link to="/privacy">Privacy Policy</Link></li>
-        </ul>
       </div>
     </header>
   );

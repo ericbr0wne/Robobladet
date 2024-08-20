@@ -22,3 +22,7 @@ header {
   width: 500px;
   height: auto;
 }
+
+.navbar {
+  margin-bottom: 20px; /* Add space below the navbar if needed */
+}

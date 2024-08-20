@@ -1,3 +1,39 @@
+.sort-menu {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #494949;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sort-menu label {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.sort-menu select {
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+  color: #252525;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.sort-menu select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+  outline: none;
+}
+
+.sort-menu option {
+  padding: 8px;
+}
+
 .article-list {
   color: black;
   max-width: 800px;
@@ -28,6 +64,12 @@
   color: white;
   overflow: hidden;
   height: 300px;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.article-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .article-card::before {
