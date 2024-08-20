@@ -1,23 +1,41 @@
 div#contactContainer {
-  background-color: #fff;
-  border-radius: 5px;
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 600px;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0px 0px 18px #4169e1;
   overflow: hidden;
 }
 
-/*needed to make a separate rule for the color to change -_-*/
+/*added to make the background a different opacity without effecting other
+elements*/
+div#contactContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../assets/mountains.jpeg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  z-index: -1; /*putting the background behind the content*/
+  border-radius: 8px;
+}
+
 div#contactContainer * {
-  color: #000;
+  position: relative; 
+  z-index: 1; /*making sure the content is above the background*/
 }
 
 a#email {
-  color: #4169e1
+  color: #4169e1;
 }
 
 div#contactText {
@@ -25,8 +43,12 @@ div#contactText {
   margin-bottom: 10px;
 }
 
+p, h2 {
+  color: #d9ffff;
+}
+
 form#contactForm {
-  background-color: #ededf1;
+  background-color: #397ea0ce;
   border-radius: 5px;
   min-width: 50%;
   margin: 10px;
@@ -34,20 +56,24 @@ form#contactForm {
   align-items: center;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
-h2#contactFormH2 {
-  color: #787878;
+h2#contactFormH2, label {
+  color: #d9ffff;
 }
 
 /*Instead of listing several types, one common (contactInput) class is used for input/button*/
 .contactInput,
 select#subject,
 input#submitButton {
-  background-color: #fff;
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  background-color: #fbfdfd;
+  color: #00040b;
   box-sizing: border-box;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  border: 2px solid #90a1ca;
+  border: 2px solid #2b6a8a;
   border-radius: 5px;
   width: 80%;
   padding: 10px;
@@ -59,18 +85,18 @@ input#submitButton {
 }
 
 input#submitButton {
-  background-color: #fff600;
-  border-color: #e6e04b;
+  background-color: #d9ffff;
+  border-color: #90a1ca;
   width: 50%;
 }
 
 input#submitButton:hover {
-  background-color: #e6e04b;
+  background-color: #90a1ca;
 }
 
 .contactInput:focus,
 select#subject:focus {
-  border-color: #4169e1;
+  border-color: #0a3855;
 }
 
 select#subject,
