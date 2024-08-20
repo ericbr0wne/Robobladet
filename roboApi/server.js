@@ -90,6 +90,7 @@ const articles = [
   }
 ];
 
+
 app.get("/api/articles", (req, res) => {
   let filteredArticles = articles;
   const { topic, sortBy } = req.query;
@@ -107,6 +108,15 @@ app.get("/api/articles", (req, res) => {
   } else if (sortBy === "oldest") {
     filteredArticles = filteredArticles.sort(
       (a, b) => new Date(a.published) - new Date(b.published)
+    );
+  }
+  const { search } = req.query;
+
+  if (search) {
+    const searchTerm = search.toLowerCase();
+    filteredArticles = filteredArticles.filter(article =>
+      article.title.toLowerCase().includes(searchTerm) ||
+      article.summary.toLowerCase().includes(searchTerm)
     );
   }
 
