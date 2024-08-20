@@ -5,6 +5,7 @@ import ArticleList from "./components/ArticleList";
 import Privacy from "./components/Privacy";
 import Robot from "./components/Robot";
 import Navbar from "./components/Navbar";
+import Contact from "./components/ContactForm";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           }
         />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/contact-us" element={<Contact />} />
       </Routes>
       <Robot />
     </Router>
