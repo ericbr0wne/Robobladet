@@ -43,10 +43,6 @@ div#contactText {
   margin-bottom: 10px;
 }
 
-p, h2 {
-  color: #d9ffff;
-}
-
 form#contactForm {
   background-color: #397ea0ce;
   border-radius: 5px;
