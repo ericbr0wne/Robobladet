@@ -1,7 +1,7 @@
 import React from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { Link } from "react-router-dom";
+import App from "./App";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
@@ -9,17 +9,3 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>
 );
-
-const Main = () => {
-  console.log("Main component loaded");
-  return (
-    <div>
-      <Header />
-      <ul>
-        <li><Link to="/privacy">Privacy Policy</Link></li>
-      </ul>
-      <ArticleList />
-    </div>
-  );
-};
-export default Main;
