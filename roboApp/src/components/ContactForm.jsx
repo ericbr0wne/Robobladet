@@ -16,7 +16,7 @@ const ContactForm = () => {
       particleCount: 100,
       spread: 70,
       origin: { x: originX, y: originY },
-      colors: ["#0056b3", "#e6e04b", "#2a2a2a", "#fcf9a1"],
+      colors: ["#4169e1", "#d9ffff", "#001423", "#005d89"],
     });
   };
 
