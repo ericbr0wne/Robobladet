@@ -1,7 +1,4 @@
 import React from "react";
-import Header from "./components/Header";
-import ArticleList from "./components/ArticleList";
-import App from "./App";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Link } from "react-router-dom";
