@@ -5,6 +5,7 @@ div#contactContainer {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-height: 600px;
   padding: 20px;
+  margin: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -35,10 +36,16 @@ div#contactContainer * {
 }
 
 a#email {
-  color: #4169e1;
+  color:#6ee1bd;
+}
+
+a#email:hover {
+  color:#12bebe;
 }
 
 div#contactText {
+  color: #d9ffff;
+  text-shadow: 0 2px 4px #347393;
   flex: 1;
   margin-bottom: 10px;
 }
