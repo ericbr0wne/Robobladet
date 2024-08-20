@@ -3,9 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: light dark !important;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,6 +23,7 @@ a:hover {
 }
 
 body {
+  background-color: #242424; /* High specificity with !important */
   margin: 0;
   display: flex;
   min-width: 320px;
@@ -69,4 +69,34 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* navbar */
+.robo-nav {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: #ddd;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 1rem;
 }
