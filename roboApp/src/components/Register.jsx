@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Register.css";
+import { useNavigate, Link } from "react-router-dom";
+import "./RegisterLogin.css";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -52,6 +52,10 @@ const Register = () => {
           <button type="button" onClick={handleRegister}>
             Registera 
           </button>
+          <p id="regLoginLink">
+            Har du redan ett konto?
+            <Link to={"/login"}> Logga in</Link>
+          </p>
         </form>
       </div>
     </div>
