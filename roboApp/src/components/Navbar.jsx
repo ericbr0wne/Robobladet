@@ -27,7 +27,7 @@ const Navbar = () => {
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/contact-us">
-            Contact Us
+            Kontakta oss
           </Link>
         </li>
         <li className="nav-item">

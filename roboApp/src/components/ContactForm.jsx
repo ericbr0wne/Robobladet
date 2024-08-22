@@ -23,12 +23,12 @@ const ContactForm = () => {
   return (
     <div id="contactContainer">
       <div id="contactText">
-        <h2>Got any questions?</h2>
-        <p>Do not hesitate to contact us!</p>
+        <h2>Har du några frågor?</h2>
+        <p>Tveka inte att kontakta oss!</p>
         <p>
-          Fill in the contact form or just send us an email to{" "}
-          <a id="email" href="mailto:info@robobladet.com">
-            info@robobladet.com
+        Fyll i kontaktformuläret eller skicka ett mail till{" "}
+          <a id="email" href="mailto:info@robobladet.se">
+            info@robobladet.se
           </a>
         </p>
         <div>
@@ -40,15 +40,15 @@ const ContactForm = () => {
         </div>
       </div>
       <form id="contactForm" onSubmit={handleSubmit}>
-        <h2 id="contactFormH2">Contact form</h2>
-        <label htmlFor="fName">First name:</label>
+        <h2 id="contactFormH2">Kontaktformulär</h2>
+        <label htmlFor="fName">Förnamn:</label>
         <input
           type="text"
           className="contactInput"
           name="fName"
           required
         />
-        <label htmlFor="lName">Last name:</label>
+        <label htmlFor="lName">Efternamn:</label>
         <input
           type="text"
           className="contactInput"
@@ -61,21 +61,21 @@ const ContactForm = () => {
           name="email"
           required
         />
-        <label htmlFor="subject">Subject:</label>
+        <label htmlFor="subject">Ämne:</label>
         <select id="subject" name="subject" required>
-          <option value="">Select a subject</option>
-          <option value="Article">Article</option>
-          <option value="Privacy policy">Privacy policy</option>
-          <option value="Other">Other</option>
+          <option value="">Välj ett ämne</option>
+          <option value="Article">Artiklar</option>
+          <option value="Privacy policy">Integritetspolicy</option>
+          <option value="Other">Annat</option>
         </select>
-        <label htmlFor="message">Message:</label>
+        <label htmlFor="message">Meddelande:</label>
         <textarea
           className="contactInput"
           name="message"
           rows="4"
           required
         ></textarea>
-        <input id="submitButton" type="submit" value="Submit" />
+        <input id="submitButton" type="submit" value="Skicka" />
       </form>
     </div>
   );
