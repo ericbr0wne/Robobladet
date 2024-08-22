@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
@@ -30,7 +30,7 @@ const Register = () => {
 
   return (
     <div>
-      <h1>Registera en ny användare</h1>
+      <h1>Registera ett nytt konto</h1>
       <div className="regLoginContainer">
         <form className="regLoginForm">
           <div>
