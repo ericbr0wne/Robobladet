@@ -34,24 +34,8 @@ function App() {
         />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact-us" element={<Contact />} />
-        <Route
-          path="/register"
-          element={isUserRegistered() ? <Navigate to="/login" /> : <Register />}
-        />
-        <Route
-          path="/login"
-          element={
-            isUserRegistered()
-              ? isAuthenticated()
-                ? <Navigate to="/" />
-                : <Login />
-              : <Navigate to="/register" />
-          }
-        />
-        <Route
-          path="*"
-          element={<Navigate to={isAuthenticated() ? "/" : "/login"} />}
-        />
+        <Route path="/login" element={isUserRegistered() ? (isAuthenticated() ? <Navigate to="/" /> : <Login />) : <Navigate to="/register" />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Robot />
     </Router>
