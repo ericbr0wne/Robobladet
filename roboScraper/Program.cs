@@ -3,15 +3,18 @@ using roboScraper;
 using System.Data;
 using System.Xml;
 
-var rssUris = RssPrompter.GetRss();
+List<string> newsUris = new List<string>
+{
+    "https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/",
+    "http://www.dn.se/nyheter/m/rss/"
+};
 
 // globaal httpclient
-
 HttpClient client = new HttpClient();
-var news = await FetchRssNews(rssUris, client);
+var news = await FetchRssNews(newsUris, client);
 
-Console.WriteLine("press enter to destroy the database");
-Console.ReadLine();
+WriteLine("press enter to destroy the database");
+ReadLine();
 ShipToDb(news);
 
 static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient client)
