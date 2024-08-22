@@ -17,7 +17,7 @@ const db = mysql.createConnection({
 app.get("/api/articles", (req, res) => {
   const { topic, sortBy, search } = req.query;
 
-  let query = "SELECT * FROM articles"; // Assuming your table is named 'articles'
+  let query = "SELECT * FROM articles";
   let values = [];
 
   if (topic) {
