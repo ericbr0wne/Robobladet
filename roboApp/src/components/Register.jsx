@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // useNavigate hook for navigation
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
@@ -29,28 +30,30 @@ const Register = () => {
 
   return (
     <div>
-      <h1>Register</h1>
-      <form>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={handleRegister}>
-          Register
-        </button>
-      </form>
+      <h1>Registera en ny användare</h1>
+      <div className="regLoginContainer">
+        <form className="regLoginForm">
+          <div>
+            <label htmlFor="username">Användarnamn: </label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Lösenord: </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="button" onClick={handleRegister}>
+            Registera 
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
