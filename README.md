@@ -9,4 +9,6 @@ Robobladet - A news web app built with React and Express.js
 ## RoboApi ## // Backend
 
 * cd roboApi
+* npm install
+* _Required packages for login function_: npm install bcryptjs jsonwebtoken express-jwt
 * node server.js
