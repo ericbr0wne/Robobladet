@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./Register.css";
+import "./RegisterLogin.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -46,7 +46,7 @@ const Login = () => {
             />
           </div>
           <button onClick={handleLogin}>Logga in</button>
-          <p id="regLink">
+          <p id="regLoginLink">
             Har du inget konto?
             <Link to={"/register"}> Skapa ett konto</Link>
           </p>
