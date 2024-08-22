@@ -1,0 +1,49 @@
+/*Register and Login CSS*/
+
+.regLoginContainer {
+    margin-top: 50px;
+    padding: 10%;
+    border-radius: 8px;
+    background-color: #c3dcec;
+    border: 2px solid #2b6a8a;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.2);
+}
+
+.regLoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.regLoginForm label, input {
+    margin: 1%;
+    color: #011925;
+}
+
+.regLoginForm input {
+    background-color: #fbfdfd;
+    border: 2px solid #2b6a8a;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.2);
+    padding: 4px;
+    width: 200px;
+    outline: none;
+}
+
+.regLoginForm input:focus {
+    border: 2px solid #3f2caa;
+}
+
+.regLoginForm button {
+    margin-top: 5%;
+    color: #fbfdfd;
+    background-color: #2b6a8a;
+    border: 2px solid #2b6a8a;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.2);
+}
+
+.regLoginForm button:hover {
+    background-color: #3f2caa;
+    border: 2px solid #3f2caa;
+}
