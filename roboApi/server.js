@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+const mysql = require("mysql2");
 const app = express();
-const port = 3000; 
-const mysql = require('mysql2'); 
+const port = 3000;
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -12,11 +12,11 @@ app.use(cors());
 app.use(express.json());
 
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'mysql',
-  database: 'robobladet_db'
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "mysql",
+  database: "robobladet_db",
 });
 
 // Users saves in a local file, temporary fix
@@ -75,33 +75,33 @@ app.post('/api/login', (req, res) => {
 app.get("/api/articles", (req, res) => {
   const { topic, sortBy, search } = req.query;
 
-  let query = 'SELECT * FROM news'; 
-  let values = []; 
+  let query = "SELECT * FROM articles";
+  let values = [];
 
   if (topic) {
-    query += ' WHERE topic = ?';
+    query += " WHERE topic = ?";
     values.push(topic);
   }
 
   if (search) {
     const searchTerm = search.toLowerCase();
-    query += topic ? ' AND (' : ' WHERE ('; 
-    query += ' LOWER(title) LIKE ? OR LOWER(summary) LIKE ?)';
-    values.push(`%${searchTerm}%`, `%${searchTerm}%`); 
+    query += topic ? " AND (" : " WHERE (";
+    query += " LOWER(title) LIKE ? OR LOWER(summary) LIKE ?)";
+    values.push(`%${searchTerm}%`, `%${searchTerm}%`);
   }
 
   if (sortBy === "newest") {
-    query += ' ORDER BY published DESC';
+    query += " ORDER BY published DESC";
   } else if (sortBy === "oldest") {
-    query += ' ORDER BY published ASC';
+    query += " ORDER BY published ASC";
   }
 
-  connection.query(query, values, (err, results) => { 
+  db.query(query, values, (err, results) => {
     if (err) {
-      console.error('Error fetching articles:', err);
-      res.status(500).send('Internal Server Error');
+      console.error("Error fetching articles:", err);
+      return res.status(500).send("Internal Server Error");
     } else {
-      res.json(results); 
+      res.json(results);
     }
   });
 });

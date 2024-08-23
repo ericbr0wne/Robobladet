@@ -1,0 +1,2 @@
+http://www.dn.se/nyheter/m/rss/
+https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/
