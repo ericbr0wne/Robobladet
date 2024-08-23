@@ -6,11 +6,21 @@ label {
   color: white;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+/* Light Mode - Robot-tema */
+[data-theme='light'] {
+  --background-color: #f0f0f0; /* Ljusgrå, metallisk känsla */
+  --text-color: #333; 
+  --accent-color: #007bff; /* Klassisk robotblå */
+  --highlight-color: #ffd700; /* Guldfärgad highlight */
+}
+
+/* Dark Mode - Robot-tema */
+[data-theme='dark'] {
+  --background-color: #222; 
+  --text-color: #e0e0e0; /* Ljusgrå, digital känsla */
+  --accent-color: #00ff00; /* Neon-grön, futuristisk */
+  --highlight-color: #00ffff; /* Cyan, elektrisk */
 }
 
 header {
@@ -26,3 +36,12 @@ header {
 .navbar {
   margin-bottom: 20px; /* Add space below the navbar if needed */
 }
+
+
+.theme-toggle {
+  position: fixed; /* Positionera knappen absolut */
+  top: 10px; /* Placera den 10px från toppen */
+  right: 10px; /* Placera den 10px från höger */
+  z-index: 1000; /* Se till att knappen visas ovanpå annat innehåll */
+}
+

@@ -7,10 +7,14 @@ import Robot from "./components/Robot";
 import Navbar from "./components/Navbar";
 import Contact from "./components/ContactForm";
 import "./App.css";
+import { ThemeProvider } from "./components/ThemeContext";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   return (
     <Router>
+      <ThemeProvider>
+      <ThemeToggle/>
       <Header />
       <Navbar />
       <Routes>
@@ -21,11 +25,12 @@ function App() {
               <ArticleList />
             </div>
           }
-        />
+          />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact-us" element={<Contact />} />
       </Routes>
       <Robot />
+      </ThemeProvider>
     </Router>
   );
 }
