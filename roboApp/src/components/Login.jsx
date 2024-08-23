@@ -17,7 +17,7 @@ const Login = () => {
 
     if (data.token) {
       localStorage.setItem("token", data.token);
-      alert("Login successful");
+      alert("Inloggningen lyckades");
       navigate("/"); // Redirect to the article main page
     } else {
       alert(data.message);
@@ -26,9 +26,9 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Logga in</h1>
+      <h1>Login</h1>
       <div className="regLoginContainer">
-        <form className="regLoginForm">
+        <div className="regLoginForm">
           <div>
             <label htmlFor="username">Användarnamn: </label>
             <input
@@ -50,7 +50,7 @@ const Login = () => {
             Har du inget konto?
             <Link to={"/register"}> Skapa ett konto</Link>
           </p>
-        </form>
+        </div>
       </div>
     </div>
   );
