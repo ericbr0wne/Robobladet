@@ -23,6 +23,19 @@ label {
   --highlight-color: #00ffff; /* Cyan, elektrisk */
 }
 
+.theme-toggle { 
+  /* Styles for the toggle button */
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background-color: darken(var(--accent-color), 10%); 
+}
 
 #root {
   max-width: 1280px;
@@ -73,3 +86,4 @@ header {
 .navbar {
   margin-bottom: 20px; 
 }
+

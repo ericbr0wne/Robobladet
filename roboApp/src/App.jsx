@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import ArticleList from "./components/ArticleList";
@@ -8,13 +8,15 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/ContactForm";
 import Creators from "./components/Creators";
 import "./App.css";
-import { ThemeProvider } from "./components/ThemeContext";
+import { ThemeProvider, ThemeContext } from "./components/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
+  const { theme } = useContext(ThemeContext);
   return (
     <Router>
       <ThemeProvider>
+      <div data-theme={theme}> 
       <ThemeToggle/>
       <Header />
       <Navbar />
@@ -32,6 +34,7 @@ function App() {
         <Route path="/about" element={<Creators />} /> {/* New Route */}
       </Routes>
       <Robot />
+      </div>
       </ThemeProvider>
     </Router>
   );
