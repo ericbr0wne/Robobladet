@@ -6,7 +6,7 @@ const ThemeToggle = () => {
 console.log("Toggle TEST");
   return (
     <button onClick={toggleTheme}>
-      {theme === 'light' ? 'dark' : 'light'}
+      {theme === 'dark' ? 'light' : 'dark'}
     </button>
   );
 };

@@ -10,6 +10,7 @@ import Creators from "./components/Creators";
 import "./App.css";
 import { ThemeProvider, ThemeContext } from "./components/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
+import "./index.css";
 
 function App() {
   const { theme } = useContext(ThemeContext);

@@ -3,38 +3,23 @@ h1,
 h2,
 a,
 label {
-  color: white;
+  color: var(--text-color); 
 }
 
-
-/* Light Mode - Robot-tema */
-[data-theme='light'] {
-  --background-color: #f0f0f0; /* Ljusgrå, metallisk känsla */
-  --text-color: #333; 
-  --accent-color: #007bff; /* Klassisk robotblå */
-  --highlight-color: #ffd700; /* Guldfärgad highlight */
-}
-
-/* Dark Mode - Robot-tema */
-[data-theme='dark'] {
-  --background-color: #222; 
-  --text-color: #e0e0e0; /* Ljusgrå, digital känsla */
-  --accent-color: #00ff00; /* Neon-grön, futuristisk */
-  --highlight-color: #00ffff; /* Cyan, elektrisk */
-}
 
 .theme-toggle { 
-  /* Styles for the toggle button */
   background-color: var(--accent-color);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-}
+  transition: background-color 0.3s ease; 
 
+
+}
 .theme-toggle:hover {
-  background-color: darken(var(--accent-color), 10%); 
+  filter: brightness(90%); 
 }
 
 #root {
