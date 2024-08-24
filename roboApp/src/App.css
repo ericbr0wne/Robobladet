@@ -33,6 +33,35 @@ header {
   height: auto;
 }
 
+.robo-nav {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: #ddd;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 1rem;
+}
+
 .navbar {
   margin-bottom: 20px; /* Add space below the navbar if needed */
 }

@@ -13,7 +13,6 @@
     width: 160px;
     height: 160px;
     background-image: url('../assets/2.png');
-    /* Använd din bildväg här */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,21 +28,37 @@
     overflow: hidden;
     position: absolute;
     bottom: 180px;
-    /* Justera detta för att passa positionen ovanför roboten */
     left: 50%;
     transform: translateX(-50%);
     width: 150px;
-    /* Samma som robotens bredd för att hålla sig inom gränserna */
-    animation: scroll-text 10s linear infinite;
+    text-align: center;
 }
 
-@keyframes scroll-text {
+.fade-in {
+    animation: fadeIn 2s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeIn {
     0% {
-        transform: translateX(15%);
+        opacity: 0;
     }
 
     100% {
-        transform: translateX(-100%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 
@@ -100,24 +115,20 @@
 @keyframes slideIn {
     0% {
         left: -100px;
-        /* Start position, out of screen */
     }
 
     100% {
         left: -2%;
-        /* End position, visible */
     }
 }
 
 @keyframes slideOut {
     0% {
         left: -2%;
-        /* Start position, visible */
     }
 
     100% {
         left: -100px;
-        /* End position, out of screen */
     }
 }
 
@@ -128,8 +139,6 @@
 .minimized-robot.animate-out {
     animation: slideOut 2s forwards;
 }
-
-
 
 .backdrop {
     display: none;
