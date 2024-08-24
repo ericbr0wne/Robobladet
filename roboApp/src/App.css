@@ -23,6 +23,14 @@ label {
   --highlight-color: #00ffff; /* Cyan, elektrisk */
 }
 
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -63,14 +71,5 @@ header {
 }
 
 .navbar {
-  margin-bottom: 20px; /* Add space below the navbar if needed */
+  margin-bottom: 20px; 
 }
-
-
-.theme-toggle {
-  position: fixed; /* Positionera knappen absolut */
-  top: 10px; /* Placera den 10px från toppen */
-  right: 10px; /* Placera den 10px från höger */
-  z-index: 1000; /* Se till att knappen visas ovanpå annat innehåll */
-}
-
