@@ -14,5 +14,5 @@ Robobladet - A news web app built with React and Express.js
 ## RoboScraper ## // Webscraping news sites
 
 * cd roboScraper
-* npm install
+* dotnet build
 * dotnet run
