@@ -10,3 +10,9 @@ Robobladet - A news web app built with React and Express.js
 
 * cd roboApi
 * node server.js
+
+## RoboScraper ## // Webscraping news sites
+
+* cd roboScraper
+* npm install
+* dotnet run
