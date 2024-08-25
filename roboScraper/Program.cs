@@ -3,6 +3,8 @@ using roboScraper;
 using System.Data;
 using System.Xml;
 
+const string connectionString = "Server=localhost;Database=robobladet_db;Uid=root;Pwd=mysql;";
+
 List<string> newsUris = new List<string>
 {
     "https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/",
@@ -11,12 +13,31 @@ List<string> newsUris = new List<string>
 
 // globaal httpclient
 HttpClient client = new HttpClient();
-var news = await FetchRssNews(newsUris, client);
 
-WriteLine("press enter to destroy the database");
-ReadLine();
-ShipToDb(news);
+while (true)
+{
+    WriteLine("1. to ship to db");
+    WriteLine("2. to delete db");
+    WriteLine("3. to exit");
 
+    string input = Console.ReadLine() ?? "";
+    if (input == "1")
+    {
+        var news = await FetchRssNews(newsUris, client);
+        ShipToDb(news, connectionString);
+        Console.WriteLine(newsUris.Count + " articles shipped to db");
+    }
+    else if (input == "2")
+    {
+        DeleteDb(connectionString);
+        Console.WriteLine("deleted all articles");
+    }
+    else if (input == "3")
+    {
+        break;
+    }
+
+}
 static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient client)
 {
     List<Article> articles = new List<Article>();
@@ -60,13 +81,18 @@ static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient c
     return articles;
 }
 
-static void ShipToDb(List<Article> articles)
+static void ShipToDb(List<Article> articles, string connectionString)
 {
-    string connectionString = "Server=localhost;Database=robobladet_db;Uid=root;Pwd=mysql;";
-
     using (var dbContext = new MySqlConnection(connectionString))
     {
         dbContext.Open();
+
+        const string resetAutoIncrementQuery = "ALTER TABLE articles AUTO_INCREMENT = 1";
+        using (var resetCommand = new MySqlCommand(resetAutoIncrementQuery, dbContext))
+        {
+            resetCommand.ExecuteNonQuery();
+            Console.WriteLine("auto-increment set to 1.");
+        }
 
         const string query = @"
             INSERT INTO articles (title, summary, link, img, published) 
@@ -101,4 +127,27 @@ static void ShipToDb(List<Article> articles)
             }
         }
     }
+}
+static void DeleteDb(string connectionString)
+{
+    using (var db = new MySqlConnection(connectionString))
+    {
+        db.Open();
+
+        // reset autoincrement
+        const string resetAutoIncrementQuery = "ALTER TABLE articles AUTO_INCREMENT = 1";
+        using (var resetCommand = new MySqlCommand(resetAutoIncrementQuery, db))
+        {
+            resetCommand.ExecuteNonQuery();
+            Console.WriteLine("auto-increment set to 1.");
+        }
+
+
+        const string query = "delete from articles";
+        using (var command = new MySqlCommand(query, db))
+        {
+            command.ExecuteNonQuery();
+        }
+    }
+
 }
