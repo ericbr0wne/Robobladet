@@ -3,23 +3,7 @@ h1,
 h2,
 a,
 label {
-  color: var(--text-color); 
-}
-
-
-.theme-toggle { 
-  background-color: var(--accent-color);
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; 
-
-
-}
-.theme-toggle:hover {
-  filter: brightness(90%); 
 }
 
 #root {
@@ -71,4 +55,3 @@ header {
 .navbar {
   margin-bottom: 20px; 
 }
-

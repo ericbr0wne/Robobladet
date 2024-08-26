@@ -16,6 +16,8 @@ const ThemeProvider = ({ children }) => {
   // Sparar tema till localStorage när det ändras
   useEffect(() => {
     localStorage.setItem('theme', theme);
+
+    document.documentElement.setAttribute('data-theme', theme); // Uppdatera HTML-attributet
   }, [theme]);
 
   const toggleTheme = () => {
