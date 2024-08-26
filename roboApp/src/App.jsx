@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import ArticleList from "./components/ArticleList";
@@ -14,30 +14,26 @@ import "./index.css";
 
 function App() {
   const { theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
   return (
-    <Router>
-      <ThemeProvider>
-      <div data-theme={theme}> 
-      <ThemeToggle/>
-      <Header />
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <ArticleList />
-            </div>
-          }
-          />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/contact-us" element={<Contact />} />
-        <Route path="/about" element={<Creators />} /> {/* New Route */}
-      </Routes>
-      <Robot />
-      </div>
-      </ThemeProvider>
-    </Router>
+    <div>
+      <ThemeToggle />
+      <Router>
+        <Header />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ArticleList />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/about" element={<Creators />} />
+        </Routes>
+        <Robot />
+      </Router>
+    </div>
   );
 }
 

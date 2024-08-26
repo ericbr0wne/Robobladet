@@ -11,44 +11,80 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+/* Default (light mode) */
 body {
-  /* Flytta temafärgerna till body */
-  --background-color: #f0f0f0; /* Ljusgrå, metallisk känsla */
-  --text-color: #ffffff; 
-  --accent-color: #007bff; /* Klassisk robotblå */
-  --highlight-color: #ffd700; /* Guldfärgad highlight */
-
-  background-color: var(--background-color); /* Använd CSS-variabeln */
-  color: var(--text-color); /* Använd CSS-variabeln */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Lägg till mjuka övergångar */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
   display: flex;
   min-width: 320px;
   min-height: 100vh;
 }
 
-/* Light Mode - Robot-tema */
 body[data-theme='light'] {
-  --background-color: #f0f0f0; 
-  --text-color: #333; 
-  --accent-color: #007bff; 
-  --highlight-color: #ffd700;
-  --nav-background-color: #eee; 
+  --background-color: white;
+  --text-color: black;
 }
 
-/* Dark Mode - Robot-tema */
 body[data-theme='dark'] {
-  --background-color: #222; 
-  --text-color: #e0e0e0;
-  --accent-color: #00ff00; 
-  --highlight-color: #00ffff; 
-  --nav-background-color: #333; 
+  --background-color: black;
+  --text-color: white;
 }
 
+/* Dark Mode */
+body[data-theme='dark'] {
+  --accent-color: #00ff00;
+  --highlight-color: #00ffff;
+  --nav-background-color: #333;
+}
 
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
 }
 
+/* Theme Toggle */
+.theme-toggle {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  /* Color should match the current theme's text color */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  filter: brightness(90%);
+}
+
+/* Navbar Styles */
+.robo-nav {
+  background-color: var(--nav-background-color);
+  /* Use theme-based nav background color */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  color: var(--text-color);
+  /* Make sure text color matches the current theme */
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: var(--highlight-color);
+  /* Use the highlight color for hover */
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
