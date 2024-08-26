@@ -1,10 +1,10 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark !important;
-  color: rgba(255, 255, 255, 0.87);
+  color-scheme: light dark;
+  /* Tillåt både light och dark mode */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -12,17 +12,60 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+/* Default (light mode) */
 body {
-  background-color: #242424; /* High specificity with !important */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
   display: flex;
   min-width: 320px;
   min-height: 100vh;
 }
 
+body[data-theme='light'] {
+  --background-color: white;
+  --text-color: black;
+}
+
+body[data-theme='dark'] {
+  --background-color: black;
+  --text-color: white;
+}
+
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
+  color: var(--text-color);
 }
 
+
+
+/* Navbar Styles */
+.robo-nav {
+  background-color: var(--nav-background-color);
+  /* Use theme-based nav background color */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  color: var(--text-color);
+  /* Make sure text color matches the current theme */
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: var(--highlight-color);
+  /* Use the highlight color for hover */
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}

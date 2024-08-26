@@ -47,11 +47,11 @@ setSearchQuery(...): useState hook - Den används för att uppdatera värdet av 
 
   return (
     <div className="article-list">
-      <h1>Senaste nytt!</h1>
+      <h1>Articles</h1>
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Sök artiklar..."
+          placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
         />

@@ -55,3 +55,27 @@ header {
 .navbar {
   margin-bottom: 20px; 
 }
+
+.theme-toggle img {
+  width: 24px; /* Anpassa efter behov */
+  height: 24px;
+
+}
+.theme-toggle {
+  background-color: var(--background-color); /* Använd bakgrundsfärg från body */
+  color: var(--text-color); 
+  position: fixed; /* Positionera knappen absolut */
+  top: 10px; /* 10px från toppen */
+  right: 10px; /* 10px från höger */
+  z-index: 1000; /* Se till att knappen visas ovanpå annat innehåll */
+  border: none; /* Ta bort border */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.theme-toggle:hover {
+  filter: brightness(90%);
+  background-color: rgba(255, 255, 255, 0.2);
+}
