@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/ContactForm";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Creators from "./components/Creators";
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<Creators />} />
       </Routes>
       <Robot />
     </Router>
