@@ -1,4 +1,3 @@
-import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import ArticleList from "./components/ArticleList";
@@ -8,16 +7,10 @@ import Navbar from "./components/Navbar";
 import Contact from "./components/ContactForm";
 import Creators from "./components/Creators";
 import "./App.css";
-import { ThemeProvider, ThemeContext } from "./components/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 import "./index.css";
 
 function App() {
-  const { theme } = useContext(ThemeContext);
-
-  useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-  }, [theme]);
 
   return (
     <div>

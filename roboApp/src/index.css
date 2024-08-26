@@ -33,33 +33,13 @@ body[data-theme='dark'] {
   --text-color: white;
 }
 
-/* Dark Mode */
-body[data-theme='dark'] {
-  --accent-color: #00ff00;
-  --highlight-color: #00ffff;
-  --nav-background-color: #333;
-}
-
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
-}
-
-/* Theme Toggle */
-.theme-toggle {
-  background-color: var(--accent-color);
   color: var(--text-color);
-  /* Color should match the current theme's text color */
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.theme-toggle:hover {
-  filter: brightness(90%);
-}
+
 
 /* Navbar Styles */
 .robo-nav {

@@ -112,3 +112,7 @@
 .article-card a:hover {
   text-decoration: underline;
 }
+
+.search-bar {
+  margin-bottom: 20px;
+}
