@@ -32,7 +32,7 @@ function App() {
           />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact-us" element={<Contact />} />
-        <Route path="/about" element={<Creators />} /> {/* New Route */}
+        <Route path="/about" element={<Creators />} />
       </Routes>
       <Robot />
       </div>

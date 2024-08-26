@@ -15,35 +15,38 @@
     left: 0;
     width: 100%;
     height: 100%;
-    display: none;
     opacity: 0;
-    transition: opacity 3s ease-in-out;
+    transition: opacity 2s ease-in-out;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Flyttar namnet till toppen */
+    align-items: center;
+    padding-top: 5px;
+    /* Ger lite avstånd från toppen */
 }
 
-.creator-slide.fade-in {
-    display: block;
+.creator-slide.active {
     opacity: 1;
-}
-
-.creator-slide.fade-out {
-    display: block;
-    opacity: 0;
+    z-index: 1;
 }
 
 .creator-slide img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 5px;
 }
 
 .creator-name {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 20px;
     font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 1px white;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: 'Cinzel', serif;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 2;
 }

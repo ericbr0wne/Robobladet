@@ -16,25 +16,13 @@ const creators = [
 
 const Creators = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [fadeIn, setFadeIn] = useState(false);
 
     useEffect(() => {
-        const fadeInTimeout = setTimeout(() => {
-            setFadeIn(true);
-        }, 100); // en lite delay
-
         const interval = setInterval(() => {
-            setFadeIn(true);    //starta
-            setTimeout(() => {  //vänta
-                setFadeIn(false);  //avsluta
-                setTimeout(() => {
-                    setCurrentIndex((prevIndex) => (prevIndex + 1) % creators.length);
-                }, 3000);
-            }, 5000);
-        }, 9000);
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % creators.length);
+        }, 8000); // Byt bild var 8:e sekund
 
         return () => {
-            clearTimeout(fadeInTimeout);
             clearInterval(interval);
         };
     }, []);
@@ -44,11 +32,7 @@ const Creators = () => {
             {creators.map((creator, index) => (
                 <div
                     key={index}
-                    className={`creator-slide ${index === currentIndex
-                        ? fadeIn
-                            ? "fade-in"
-                            : "fade-out"
-                        : ""
+                    className={`creator-slide ${index === currentIndex ? "active" : ""
                         }`}
                 >
                     <div className="creator-name">{creator.name}</div>
