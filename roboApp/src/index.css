@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   line-height: 1.5;
   font-weight: 400;
 
@@ -23,13 +23,13 @@ body {
   min-height: 100vh;
 }
 
-body[data-theme='light'] {
-  --background-color: white;
+body[data-theme="light"] {
+  --background-color: rgb(255, 255, 255);
   --text-color: black;
 }
 
-body[data-theme='dark'] {
-  --background-color: black;
+body[data-theme="dark"] {
+  --background-color: rgb(25, 25, 25);
   --text-color: white;
 }
 
@@ -39,28 +39,36 @@ h1 {
   color: var(--text-color);
 }
 
-
-
 /* Navbar Styles */
 .robo-nav {
   background-color: var(--nav-background-color);
-  /* Use theme-based nav background color */
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px var(--text-color) solid;
+  border-radius: 5px;
+  width: 800px;
+  position: static;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 .nav-link {
   color: var(--text-color);
-  /* Make sure text color matches the current theme */
   text-decoration: none;
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
 
 .nav-link:hover {
-  color: var(--highlight-color);
-  /* Use the highlight color for hover */
+  color: hsla(188, 38%, 54%, 0.696);
 }
 
 #root {
