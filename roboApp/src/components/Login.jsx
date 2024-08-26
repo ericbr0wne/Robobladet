@@ -18,7 +18,7 @@ const Login = () => {
     if (data.token) {
       localStorage.setItem("token", data.token);
       alert("Inloggningen lyckades");
-      navigate("/"); // Redirect to the article main page
+      navigate("/"); 
     } else {
       alert(data.message);
     }

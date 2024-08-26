@@ -11,7 +11,6 @@ const ContactForm = () => {
     const originX = (rect.left + rect.right) / 2 / window.innerWidth;
     const originY = (rect.top + rect.bottom) / 2 / window.innerHeight;
 
-    // Trigger the confetti effect
     window.confetti({
       particleCount: 100,
       spread: 70,

@@ -13,8 +13,6 @@ div#contactContainer {
   overflow: hidden;
 }
 
-/*added to make the background a different opacity without effecting other
-elements*/
 div#contactContainer::before {
   content: "";
   position: absolute;
@@ -26,13 +24,13 @@ div#contactContainer::before {
   background-size: cover;
   background-position: center;
   opacity: 0.4;
-  z-index: -1; /*putting the background behind the content*/
+  z-index: -1; 
   border-radius: 8px;
 }
 
 div#contactContainer * {
   position: relative; 
-  z-index: 1; /*making sure the content is above the background*/
+  z-index: 1; 
 }
 
 a#email {
@@ -66,7 +64,6 @@ h2#contactFormH2, label {
   color: #d9ffff;
 }
 
-/*Instead of listing several types, one common (contactInput) class is used for input/button*/
 .contactInput,
 select#subject,
 input#submitButton {
@@ -84,7 +81,7 @@ input#submitButton {
   margin-bottom: 10px;
   resize: vertical;
   outline: none;
-  resize: none; /*stopping user to resize textarea, scroll is added instead*/
+  resize: none; 
 }
 
 input#submitButton {

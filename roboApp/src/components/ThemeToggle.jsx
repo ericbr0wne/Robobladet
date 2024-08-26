@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
-import lightModeIcon from '../assets/images/dark.png'; // Importera bilderna
+import lightModeIcon from '../assets/images/dark.png';
 import darkModeIcon from '../assets/images/light.png';
 
 const ThemeToggle = () => {

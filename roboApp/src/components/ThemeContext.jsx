@@ -5,7 +5,6 @@ const ThemeContext = createContext();
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
 
-  // Laddar tema från localStorage vid initial rendering
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) {
@@ -13,11 +12,11 @@ const ThemeProvider = ({ children }) => {
     }
   }, []);
 
-  // Sparar tema till localStorage när det ändras
+
   useEffect(() => {
     localStorage.setItem('theme', theme);
 
-    document.documentElement.setAttribute('data-theme', theme); // Uppdatera HTML-attributet
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

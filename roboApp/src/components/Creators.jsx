@@ -20,7 +20,7 @@ const Creators = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % creators.length);
-        }, 8000); // Byt bild var 8:e sekund
+        }, 8000); 
 
         return () => {
             clearInterval(interval);
@@ -29,6 +29,7 @@ const Creators = () => {
 
     return (
         <div className="creators-container">
+            
             {creators.map((creator, index) => (
                 <div
                     key={index}

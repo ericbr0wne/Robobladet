@@ -25,18 +25,18 @@ header {
 }
 
 .theme-toggle img {
-  width: 60px; /* Anpassa efter behov */
+  width: 60px; 
 }
 .theme-toggle {
   background-color: var(
     --background-color
-  ); /* Använd bakgrundsfärg från body */
+  );
   color: var(--text-color);
-  position: fixed; /* Positionera knappen absolut */
-  top: 10px; /* 10px från toppen */
-  right: 10px; /* 10px från höger */
-  z-index: 1000; /* Se till att knappen visas ovanpå annat innehåll */
-  border: none; /* Ta bort border */
+  position: fixed; 
+  top: 10px; 
+  right: 10px; 
+  z-index: 1000; 
+  border: none; 
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;

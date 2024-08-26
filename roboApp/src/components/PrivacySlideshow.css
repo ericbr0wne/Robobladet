@@ -17,7 +17,6 @@ img#slideshow {
   border-radius: 5px;
 }
 
-/*Indicators on which slide is active*/
 span.bullet {
   height: 4px;
   width: 15px;
