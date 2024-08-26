@@ -5,6 +5,8 @@ import Privacy from "./components/Privacy";
 import Robot from "./components/Robot";
 import Navbar from "./components/Navbar";
 import Contact from "./components/ContactForm";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import Creators from "./components/Creators";
 import "./App.css";
 import ThemeToggle from "./components/ThemeToggle";
