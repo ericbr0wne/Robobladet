@@ -1,4 +1,6 @@
-Robobladet - A news web app built with React and Express.js
+![screenshot](https://i.imgur.com/2orAXBS.png)
+
+A news web app built with React and Express.js
 
 ## RoboApp ## // Frontend
 
