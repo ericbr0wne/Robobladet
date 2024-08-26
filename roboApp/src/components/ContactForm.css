@@ -36,11 +36,11 @@ div#contactContainer * {
 }
 
 a#email {
-  color:#6ee1bd;
+  color:#B4FBFB;
 }
 
 a#email:hover {
-  color:#12bebe;
+  color:#7FE2F3;
 }
 
 div#contactText {
@@ -51,8 +51,8 @@ div#contactText {
 }
 
 form#contactForm {
-  background-color: #397ea0ce;
-  border-radius: 5px;
+  background-color: #16597bd7;
+  border-radius: 8px;
   min-width: 50%;
   margin: 10px;
   padding: 10px;
@@ -89,17 +89,16 @@ input#submitButton {
 
 input#submitButton {
   background-color: #d9ffff;
-  border-color: #90a1ca;
   width: 50%;
 }
 
 input#submitButton:hover {
-  background-color: #90a1ca;
+  background-color: #7FE2F3;
 }
 
 .contactInput:focus,
 select#subject:focus {
-  border-color: #0a3855;
+  border-color: #7FE2F3;
 }
 
 select#subject,
