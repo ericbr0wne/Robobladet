@@ -20,6 +20,8 @@ public class Database
             {
                 await resetCommand.ExecuteNonQueryAsync();
                 Console.WriteLine("auto-increment set to 1.");
+                Console.WriteLine("ADDING ALL ARTICLES... DON'T EXIT");
+
             }
 
             const string query = @"

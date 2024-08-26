@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using roboScraper;
 using System.Xml;
 
-// connection string + api key from appsettings.json
+// config file
 var configuration = new ConfigurationBuilder()
 .SetBasePath(Directory.GetCurrentDirectory())
 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -22,9 +22,6 @@ List<string> newsUris = new List<string>
     "https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/",
     "http://www.dn.se/nyheter/m/rss/"
 };
-
-string summary = "Ingen vill ha en eskalering inte Israel, inte Hizbollah, inte Iran. Därför har en upptrappning gått att undvika. Endast Hamas vill annorlunda.";
-
 
 // main menu
 while (true)

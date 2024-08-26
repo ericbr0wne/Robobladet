@@ -44,9 +44,9 @@ public class TextRazorAPI
                 .OrderByDescending(t => (double)t["score"])
                 .FirstOrDefault();
             var topicLabel = topTopic["label"]?.ToString();
+
             return topicLabel;
         }
-
         return "Övrigt";
     }
 }

@@ -1,0 +1,11 @@
+- change topic from JSON to varchar
+- add appsettings.json in /roboScraper in this format:
+
+{
+  "TextRazor": {
+    "ApiKey": "API KEY HERE"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "DB CONNECTION HERE"
+  }
+}
