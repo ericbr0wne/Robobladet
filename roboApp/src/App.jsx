@@ -13,7 +13,6 @@ import ThemeToggle from "./components/ThemeToggle";
 import "./index.css";
 
 function App() {
-
   return (
     <div>
       <ThemeToggle />
@@ -25,6 +24,7 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/about" element={<Creators />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Robot />
       </Router>

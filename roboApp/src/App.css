@@ -21,49 +21,17 @@ header {
 #header-logo img {
   width: 500px;
   height: auto;
-}
-
-.robo-nav {
-  background-color: #333;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  margin-right: 1rem;
-}
-
-.nav-link:hover {
-  color: #ddd;
-}
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.nav-item {
-  margin-left: 1rem;
-}
-
-.navbar {
-  margin-bottom: 20px; 
+  filter: drop-shadow(1px 1px 1px black);
 }
 
 .theme-toggle img {
-  width: 24px; /* Anpassa efter behov */
-  height: 24px;
-
+  width: 60px; /* Anpassa efter behov */
 }
 .theme-toggle {
-  background-color: var(--background-color); /* Använd bakgrundsfärg från body */
-  color: var(--text-color); 
+  background-color: var(
+    --background-color
+  ); /* Använd bakgrundsfärg från body */
+  color: var(--text-color);
   position: fixed; /* Positionera knappen absolut */
   top: 10px; /* 10px från toppen */
   right: 10px; /* 10px från höger */
@@ -72,7 +40,7 @@ header {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .theme-toggle:hover {
