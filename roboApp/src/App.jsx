@@ -25,6 +25,7 @@ function App() {
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/about" element={<Creators />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Robot />
       </Router>
