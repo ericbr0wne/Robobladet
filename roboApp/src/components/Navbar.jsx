@@ -7,32 +7,32 @@ const Navbar = () => {
       <ul className="nav-list">
         <li className="nav-item">
           <Link className="nav-link" to="/">
-            Home
+            Artiklar
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/privacy">
-            Privacy
+            Policy
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/categories">
-            Categories
+            Kategorier
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/about">
-            About
+            Designers
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/contact-us">
-            Kontakta oss
+            Kontakt
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/login">
-            Logga in
+            Inlogg
           </Link>
         </li>
       </ul>

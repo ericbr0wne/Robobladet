@@ -31,7 +31,7 @@ const ArticleList = () => {
 
   return (
     <div className="article-list">
-      <h1>Articles</h1>
+      <h1>Artiklar</h1>
       <div className="search-sort-bar">
         <div className="search-bar">
           <input
