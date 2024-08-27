@@ -9,54 +9,61 @@ const MrRobotic = () => {
     const [textAnimationTimer, setTextAnimationTimer] = useState(null);
 
     useEffect(() => {
-        const minimized = localStorage.getItem('robotMinimized') === 'true';
+        const minimized = sessionStorage.getItem('robotMinimized') === 'true';
         setIsRobotMinimized(minimized);
+
+        if (!minimized) {
+            startAnimation();
+        }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('robotMinimized', isRobotMinimized.toString());
+        sessionStorage.setItem('robotMinimized', isRobotMinimized.toString());
     }, [isRobotMinimized]);
 
     useEffect(() => {
-        if (isRobotMinimized) {
-            // Stop and clear any previous timer
+        if (isChatVisible) {
+            // Hide text when chat bubbles are visible
+            setIsTextVisible(false);
             if (textAnimationTimer) {
                 clearTimeout(textAnimationTimer);
             }
-            setIsTextVisible(false);
-            setAnimationState('animate-out');
-        } else {
-            const startAnimation = () => {
-                setAnimationState('animate-in');
-                setIsTextVisible(true); // Start fading in text
-
-                const timer1 = setTimeout(() => {
-                    setAnimationState('animate-out');
-                    const timer2 = setTimeout(() => setIsTextVisible(false), 3000); // Fade out text after 3 seconds
-
-                    const timer3 = setTimeout(startAnimation, 8000); // Start animation again after 8 seconds of hidden state
-                    setTextAnimationTimer(timer3);
-                }, 11000); // Total time: 3s fade-in, 3s visible, 3s fade-out, 2s hidden before restarting
-
-                setTextAnimationTimer(timer1);
-            };
-
+        } else if (!isRobotMinimized) {
             startAnimation();
         }
-    }, [isRobotMinimized]);
+    }, [isChatVisible]);
+
+    const startAnimation = () => {
+        setAnimationState('animate-in');
+        setIsTextVisible(true);
+
+        const timer1 = setTimeout(() => {
+            setAnimationState('animate-out');
+            const timer2 = setTimeout(() => setIsTextVisible(false), 3000);
+
+            const timer3 = setTimeout(startAnimation, 8000);
+            setTextAnimationTimer(timer3);
+        }, 11000);
+
+        setTextAnimationTimer(timer1);
+    };
 
     const minimizeRobot = () => {
-        setIsRobotMinimized(true);
-        setIsChatVisible(false);
+        setAnimationState('animate-out');
+        setTimeout(() => {
+            setIsRobotMinimized(true);
+            setIsChatVisible(false);
+        }, 10);
     };
 
     const restoreRobot = () => {
+        setAnimationState('animate-in');
         setIsRobotMinimized(false);
         setIsChatVisible(false);
+        startAnimation();
     };
 
     const toggleChatBubbles = () => {
-        console.log("Robot clicked!");
         setIsChatVisible(prev => !prev);
     };
 
@@ -67,7 +74,7 @@ const MrRobotic = () => {
 
     const goToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        setIsChatVisible(false); // Close chat bubbles when scrolling to top
+        setIsChatVisible(false);
     };
 
     return (
@@ -102,14 +109,12 @@ const MrRobotic = () => {
                 </div>
             )}
 
-            {/* Background dimmer */}
             {isChatVisible && (
                 <div id="backdrop" className={`backdrop ${isChatVisible ? 'active' : ''}`} onClick={() => setIsChatVisible(false)}>
                 </div>
             )}
 
-            {/* Scrolling text */}
-            {!isRobotMinimized && isTextVisible && (
+            {!isRobotMinimized && isTextVisible && !isChatVisible && (
                 <div id="scrolling-text" className="scrolling-text">
                     {"Need help?"}
                 </div>
