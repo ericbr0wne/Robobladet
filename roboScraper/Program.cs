@@ -1,7 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
 using roboScraper;
-using System.Data;
 using System.Xml;
+using DotNetEnv;
+
+Env.Load("../.env");
+
+// globaal vars
+string dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+string dbUser = Environment.GetEnvironmentVariable("DB_USER");
+string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+string dbName = Environment.GetEnvironmentVariable("DB_NAME");
+string connectionString = $"Server={dbHost};Database={dbName};Uid={dbUser};Pwd={dbPassword};";
+
+WriteLine(connectionString);
+HttpClient client = new HttpClient();
+var database = new Database(connectionString);
 
 List<string> newsUris = new List<string>
 {
@@ -9,15 +23,32 @@ List<string> newsUris = new List<string>
     "http://www.dn.se/nyheter/m/rss/"
 };
 
-// globaal httpclient
-HttpClient client = new HttpClient();
-var news = await FetchRssNews(newsUris, client);
+// main menu
+while (true)
+{
+    WriteLine("1. to ship to db");
+    WriteLine("2. to delete db");
+    WriteLine("3. to exit");
 
-WriteLine("press enter to destroy the database");
-ReadLine();
-ShipToDb(news);
+    string input = Console.ReadLine() ?? "";
+    if (input == "1")
+    {
+        var news = await FetchRssNews(newsUris, client);
+        await database.AddArticles(news);
+        Console.WriteLine(newsUris.Count + " articles shipped to db");
+    }
+    else if (input == "2")
+    {
+        await database.DeleteArticles();
+        Console.WriteLine("deleted all articles");
+    }
+    else if (input == "3")
+    {
+        break;
+    }
 
-static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient client)
+}
+async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient client)
 {
     List<Article> articles = new List<Article>();
 
@@ -58,47 +89,4 @@ static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient c
     }
 
     return articles;
-}
-
-static void ShipToDb(List<Article> articles)
-{
-    string connectionString = "Server=localhost;Database=robobladet_db;Uid=root;Pwd=mysql;";
-
-    using (var dbContext = new MySqlConnection(connectionString))
-    {
-        dbContext.Open();
-
-        const string query = @"
-            INSERT INTO articles (title, summary, link, img, published) 
-            VALUES (@Title, @Description, @Link, @Img, @Published)";
-
-        using (var command = new MySqlCommand(query, dbContext))
-        {
-            command.Parameters.Add("@Title", MySqlDbType.VarChar);
-            command.Parameters.Add("@Description", MySqlDbType.Text);
-            command.Parameters.Add("@Link", MySqlDbType.VarChar);
-            command.Parameters.Add("@Img", MySqlDbType.VarChar);
-            command.Parameters.Add("@Published", MySqlDbType.DateTime);
-
-            foreach (var article in articles)
-            {
-                command.Parameters["@Title"].Value = article.Title ?? (object)DBNull.Value;
-                command.Parameters["@Description"].Value = article.Description ?? (object)DBNull.Value;
-                command.Parameters["@Link"].Value = article.Link ?? (object)DBNull.Value;
-                command.Parameters["@Img"].Value = article.Img ?? (object)DBNull.Value;
-
-                DateTime publishedDate;
-                if (DateTime.TryParse(article.PubDate, out publishedDate))
-                {
-                    command.Parameters["@Published"].Value = publishedDate;
-                }
-                else
-                {
-                    command.Parameters["@Published"].Value = (object)DBNull.Value;
-                }
-
-                command.ExecuteNonQuery();
-            }
-        }
-    }
 }
