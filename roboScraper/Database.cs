@@ -19,17 +19,16 @@ public class Database
                 await resetCommand.ExecuteNonQueryAsync();
                 Console.WriteLine("auto-increment set to 1.");
                 Console.WriteLine("ADDING ALL ARTICLES... DON'T EXIT");
-
             }
 
             const string query = @"
             insert into articles (title, summary, link, img, published, topic) 
-            VALUES (@Title, @Description, @Link, @Img, @Published)";
+            VALUES (@Title, @Summary, @Link, @Img, @Published, @Topic)";
 
             using (var command = new MySqlCommand(query, dbContext))
             {
                 command.Parameters.Add("@Title", MySqlDbType.VarChar);
-                command.Parameters.Add("@Description", MySqlDbType.Text);
+                command.Parameters.Add("@Summary", MySqlDbType.Text);
                 command.Parameters.Add("@Link", MySqlDbType.VarChar);
                 command.Parameters.Add("@Img", MySqlDbType.VarChar);
                 command.Parameters.Add("@Published", MySqlDbType.DateTime);
@@ -38,7 +37,7 @@ public class Database
                 foreach (var article in articles)
                 {
                     command.Parameters["@Title"].Value = article.Title ?? (object)DBNull.Value;
-                    command.Parameters["@Description"].Value = article.Description ?? (object)DBNull.Value;
+                    command.Parameters["@Summary"].Value = article.Description ?? (object)DBNull.Value;
                     command.Parameters["@Link"].Value = article.Link ?? (object)DBNull.Value;
                     command.Parameters["@Img"].Value = article.Img ?? (object)DBNull.Value;
 
@@ -51,6 +50,8 @@ public class Database
                     {
                         command.Parameters["@Published"].Value = (object)DBNull.Value;
                     }
+
+                    command.Parameters["@Topic"].Value = article.Topic ?? (object)DBNull.Value;
 
                     await command.ExecuteNonQueryAsync();
                 }
