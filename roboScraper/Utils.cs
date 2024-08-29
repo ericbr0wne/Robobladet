@@ -84,11 +84,33 @@ public static class Utils
             var match = Regex.Match(url, pattern, RegexOptions.IgnoreCase);
             if (match.Success)
             {
-                return match.Groups[1].Value;
+                var topic = match.Groups[1].Value;
+
+                switch (topic.ToLower())
+                {
+                    case "insandare":
+                        return "Insändare";
+                    case "varlden":
+                        return "Världen";
+                    case "laget":
+                        return "Läget";
+                    default:
+                        return CapitalizeFirstLetter(topic);
+                }
             }
         }
 
         return "Övrigt";
+    }
+
+    private static string CapitalizeFirstLetter(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return text;
+        }
+
+        return char.ToUpper(text[0]) + text.Substring(1).ToLower();
     }
 
     public static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient client)
@@ -116,9 +138,7 @@ public static class Utils
                     var descriptionNode = item.SelectSingleNode("description");
                     string description = descriptionNode?.InnerXml ?? string.Empty;
 
-                    string cleanedDescription = Regex.Replace(description, @"<img\s+[^>]*?>", "").Trim();
-                    cleanedDescription = Regex.Replace(cleanedDescription, @"<p>|</p>", "\n").Trim();
-                    cleanedDescription = Regex.Replace(cleanedDescription, @"<!\[CDATA\[|\]\]>", "").Trim();
+                    string cleanedDescription = StripHtmlTags(description).Trim();
 
                     string link = Utils.GetNodeValue(item, "link");
 
@@ -142,5 +162,14 @@ public static class Utils
         }
 
         return articles;
+    }
+
+    private static string StripHtmlTags(string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            return string.Empty;
+        }
+        return Regex.Replace(input, "<.*?>", string.Empty);
     }
 }

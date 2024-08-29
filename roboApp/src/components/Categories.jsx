@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Categories.css";
 
 function Categories() {
   const [topics, setTopics] = useState([]);
@@ -9,9 +11,9 @@ function Categories() {
     const fetchTopics = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/topics");
-
-        if (!response.ok) throw new Error("Failed to get topics");
-
+        if (!response.ok) {
+          throw new Error("Failed to fetch topics");
+        }
         const data = await response.json();
         setTopics(data.map((item) => item.topic));
       } catch (error) {
@@ -20,6 +22,7 @@ function Categories() {
         setLoading(false);
       }
     };
+
     fetchTopics();
   }, []);
 
@@ -32,8 +35,10 @@ function Categories() {
       <ul>
         {topics.length > 0 ? (
           topics.map((topic) => (
-            <li key={topic}>
-              <a href={`categories/${topic}`}>{topic}</a>
+            <li key={topic} className="category-item">
+              <Link to={`/articles?topic=${topic}`} className="category-link">
+                {topic}
+              </Link>
             </li>
           ))
         ) : (

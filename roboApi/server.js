@@ -108,15 +108,6 @@ app.get("/api/articles", (req, res) => {
 
 app.get("/api/topics", (req, res) => {
   db.query("select distinct topic from articles", (err, results) => {
-    if (err) {
-      return res.status(500).json({ message: "Internal Server Error" });
-    }
-    if (results === null || results === undefined) {
-      return res.status(404).json({ message: "no topics found" });
-    }
-    if (!Array.isArray(results)) {
-      return res.status(500).json({ message: "Internal Server Error" });
-    }
     res.json(results);
   });
 });
