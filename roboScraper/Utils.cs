@@ -7,7 +7,6 @@ using roboScraper;
 public static class Utils
 {
     private static string _defaultImageUrl = "http://localhost:5173/src/assets/images/default-news.webp";
-
     // parse img url from <enclosure> OR <media:content> or <description>
     public static string ExtractImageUrl(XmlNode item, XmlNamespaceManager namespaceManager)
     {

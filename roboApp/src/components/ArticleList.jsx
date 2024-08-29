@@ -62,13 +62,24 @@ const ArticleList = () => {
                 key={article.title}
                 style={{ backgroundImage: `url(${article.img})` }}
               >
+                <a
+                  className="topic-text"
+                  href={`categories/${article.topic}`}
+                  target="_blank"
+                >
+                  #{article.topic}
+                </a>
                 <h2>
                   <Highlight text={article.title} searchTerm={searchQuery} />
                 </h2>
                 <p>
                   <Highlight text={shortSummary} searchTerm={searchQuery} />
                 </p>
-                <a href={article.link} target="_blank">
+                <a
+                  href={article.link}
+                  className="read-more-button"
+                  target="_blank"
+                >
                   Read more
                 </a>
               </div>
