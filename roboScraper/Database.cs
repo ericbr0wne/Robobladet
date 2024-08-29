@@ -1,4 +1,3 @@
-using System.Security.Policy;
 using MySql.Data.MySqlClient;
 using roboScraper;
 public class Database
@@ -66,7 +65,7 @@ public class Database
             using (var resetCommand = new MySqlCommand(resetAutoIncrementQuery, dbContext))
             {
                 await resetCommand.ExecuteNonQueryAsync();
-                Console.WriteLine("auto-increment set to 1.");
+                WriteLine("auto-increment set to 1.");
             }
 
             const string query = @"
@@ -117,9 +116,8 @@ public class Database
             using (var resetCommand = new MySqlCommand(resetAutoIncrementQuery, db))
             {
                 await resetCommand.ExecuteNonQueryAsync();
-                Console.WriteLine("auto-increment set to 1!");
+                WriteLine("auto-increment set to 1!");
             }
-
 
             const string query = "delete from articles";
             using (var command = new MySqlCommand(query, db))

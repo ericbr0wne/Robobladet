@@ -138,7 +138,7 @@ public static class Utils
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error fetching or parsing RSS feed from {uri}: {ex.Message}");
+                WriteLine($"Error fetching or parsing RSS feed from {uri}: {ex.Message}");
             }
         }
 

@@ -9,7 +9,6 @@ string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 string dbName = Environment.GetEnvironmentVariable("DB_NAME");
 string connectionString = $"Server={dbHost};Database={dbName};Uid={dbUser};Pwd={dbPassword};";
 
-
 HttpClient client = new HttpClient();
 var database = new Database(connectionString);
 
@@ -25,28 +24,27 @@ WriteLine("Using Database Address: " + dbHost);
 WriteLine();
 while (true)
 {
-    Console.WriteLine("*************************************************");
-    Console.WriteLine("1. Add articles to the database               ");
-    Console.WriteLine("2. Delete all articles from the database      ");
-    Console.WriteLine("3. (DEMO) Predict and update topics with AI   ");
-    Console.WriteLine("4. Exit                                       ");
-    Console.WriteLine("*************************************************");
-    Console.WriteLine();
-    Console.Write("pick an option (1-4): ");
+    WriteLine("*************************************************");
+    WriteLine("1. Add articles to the database               ");
+    WriteLine("2. Delete all articles from the database      ");
+    WriteLine("3. (DEMO) Predict and update topics with AI   ");
+    WriteLine("4. Exit                                       ");
+    WriteLine("*************************************************");
+    WriteLine();
+    Write("pick an option (1-4): ");
 
-
-    string input = Console.ReadLine() ?? "";
+    string input = ReadLine() ?? "";
     if (input == "1")
     {
-        Console.WriteLine("adding all articles to db... DON'T EXIT");
+        WriteLine("adding all articles to db... DON'T EXIT");
         var news = await Utils.FetchRssNews(newsUris, client);
         await database.AddArticles(news);
-        Console.WriteLine(newsUris.Count + " articles shipped to db");
+        WriteLine(newsUris.Count + " articles shipped to db");
     }
     else if (input == "2")
     {
         await database.DeleteArticles();
-        Console.WriteLine("deleted all articles");
+        WriteLine("deleted all articles");
     }
     else if (input == "3")
     {
@@ -57,5 +55,4 @@ while (true)
     {
         break;
     }
-
 }
