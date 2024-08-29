@@ -2,19 +2,19 @@
 
 A news web app built with React, Express.js and C#/.NET
 
-## RoboApp ## // Frontend
+## RoboApp // Frontend
 
 * cd roboApp
 * npm install
 * npm run dev
 
-## RoboApi ## // Backend
+## RoboApi // Backend
 
 * cd roboApi
 * npm install
 * _Required packages for login function_: npm install bcryptjs jsonwebtoken express-jwt
 * node server.js
-## RoboScraper ## // Webscraping news sites + Database CRUD
+## RoboScraper // Webscraping news sites + Database CRUD
 
 * cd roboScraper
 * dotnet build
