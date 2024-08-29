@@ -8,6 +8,7 @@ const fs = require("fs");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const users_file = "./users.json";
+const { predictTopic } = require("./predictorAI");
 
 app.use(cors());
 app.use(express.json());
@@ -103,6 +104,22 @@ app.get("/api/articles", (req, res) => {
       res.json(results);
     }
   });
+});
+
+app.post("/api/predictTopic", async (req, res) => {
+  const { summary } = req.body;
+
+  if (!summary) {
+    return res.status(400).json({ message: "no summary entered" });
+  }
+
+  try {
+    const predictedLabel = await predictTopic(summary);
+    res.json({ topic: predictedLabel });
+  } catch (error) {
+    console.error("Error predicting topic:", error);
+    res.status(500).json({ message: "Error predicting topic" });
+  }
 });
 
 app.listen(port, () => {

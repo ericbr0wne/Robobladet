@@ -7,22 +7,69 @@ public class Database
     {
         _connectionString = connectionString;
     }
+    public async Task PredictAndUpdateTopics()
+    {
+        List<(int id, string summary)> articlesToUpdate = new List<(int, string)>();
+
+        using (var dbContext = new MySqlConnection(_connectionString))
+        {
+            await dbContext.OpenAsync();
+            const string selectQuery = "select id, summary FROM articles";
+
+            using (var selectCommand = new MySqlCommand(selectQuery, dbContext))
+            using (var reader = await selectCommand.ExecuteReaderAsync())
+            {
+                while (await reader.ReadAsync())
+                {
+                    int id = reader.GetInt32(0);
+                    string summary = reader.GetString(1);
+                    articlesToUpdate.Add((id, summary));
+                }
+            }
+        }
+
+        using (var dbContext = new MySqlConnection(_connectionString))
+        {
+            await dbContext.OpenAsync();
+            const string updateQuery = "update articles set topic = @Topic where id = @Id";
+
+            foreach (var article in articlesToUpdate)
+            {
+                try
+                {
+                    var predictedTopic = await Utils.PredictTopic(article.summary);
+
+                    using (var updateCommand = new MySqlCommand(updateQuery, dbContext))
+                    {
+                        updateCommand.Parameters.AddWithValue("@Topic", predictedTopic ?? (object)DBNull.Value);
+                        updateCommand.Parameters.AddWithValue("@Id", article.id);
+                        await updateCommand.ExecuteNonQueryAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+    }
+
     public async Task AddArticles(List<Article> articles)
     {
         using (var dbContext = new MySqlConnection(_connectionString))
         {
             await dbContext.OpenAsync();
 
+            // auto-incr reset
             const string resetAutoIncrementQuery = "ALTER TABLE articles AUTO_INCREMENT = 1";
             using (var resetCommand = new MySqlCommand(resetAutoIncrementQuery, dbContext))
             {
                 await resetCommand.ExecuteNonQueryAsync();
-                Console.WriteLine("auto-increment set to 1.");
-                Console.WriteLine("ADDING ALL ARTICLES... DON'T EXIT");
+                WriteLine("auto-increment set to 1.");
             }
 
             const string query = @"
-            insert into articles (title, summary, link, img, published, topic) 
+            INSERT INTO articles (title, summary, link, img, published, topic) 
             VALUES (@Title, @Summary, @Link, @Img, @Published, @Topic)";
 
             using (var command = new MySqlCommand(query, dbContext))
@@ -52,9 +99,9 @@ public class Database
                     }
 
                     command.Parameters["@Topic"].Value = article.Topic ?? (object)DBNull.Value;
-
                     await command.ExecuteNonQueryAsync();
                 }
+                await dbContext.CloseAsync();
             }
         }
     }
@@ -69,16 +116,15 @@ public class Database
             using (var resetCommand = new MySqlCommand(resetAutoIncrementQuery, db))
             {
                 await resetCommand.ExecuteNonQueryAsync();
-                Console.WriteLine("auto-increment set to 1!");
+                WriteLine("auto-increment set to 1!");
             }
-
 
             const string query = "delete from articles";
             using (var command = new MySqlCommand(query, db))
             {
                 await command.ExecuteNonQueryAsync();
             }
+            await db.CloseAsync();
         }
-
     }
 }
