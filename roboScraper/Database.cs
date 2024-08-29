@@ -11,10 +11,11 @@ public class Database
     public async Task PredictAndUpdateTopics()
     {
         List<(int id, string summary)> articlesToUpdate = new List<(int, string)>();
+
         using (var dbContext = new MySqlConnection(_connectionString))
         {
             await dbContext.OpenAsync();
-            const string selectQuery = "select id, summary from articles WHERE topic IS NULL";
+            const string selectQuery = "select id, summary FROM articles";
 
             using (var selectCommand = new MySqlCommand(selectQuery, dbContext))
             using (var reader = await selectCommand.ExecuteReaderAsync())
@@ -31,8 +32,7 @@ public class Database
         using (var dbContext = new MySqlConnection(_connectionString))
         {
             await dbContext.OpenAsync();
-
-            const string updateQuery = "UPDATE articles set topic = @Topic WHERE id = @Id";
+            const string updateQuery = "update articles set topic = @Topic where id = @Id";
 
             foreach (var article in articlesToUpdate)
             {

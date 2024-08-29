@@ -1,10 +1,14 @@
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml;
 using Newtonsoft.Json;
 using roboScraper;
 
 public static class Utils
 {
+    private static string _defaultImageUrl = "http://localhost:5173/src/assets/images/default-news.webp";
+
+    // parse img url from <enclosure> OR <media:content> or <description>
     public static string ExtractImageUrl(XmlNode item, XmlNamespaceManager namespaceManager)
     {
         var enclosureNode = item.SelectSingleNode("enclosure", namespaceManager);
@@ -17,7 +21,6 @@ public static class Utils
             }
         }
 
-        // if no <enclosure> checks for media:content
         var mediaContentNode = item.SelectSingleNode("media:content", namespaceManager);
         if (mediaContentNode != null)
         {
@@ -28,7 +31,21 @@ public static class Utils
             }
         }
 
-        return null;
+        var descriptionNode = item.SelectSingleNode("description");
+        if (descriptionNode != null)
+        {
+            var cdataContent = descriptionNode.InnerXml;
+            if (!string.IsNullOrEmpty(cdataContent))
+            {
+                var match = Regex.Match(cdataContent, @"<img\s+[^>]*?src\s*=\s*['""]([^'""]+)['""][^>]*?>", RegexOptions.IgnoreCase);
+                if (match.Success)
+                {
+                    return match.Groups[1].Value;
+                }
+            }
+        }
+
+        return _defaultImageUrl;
     }
 
     public static string GetNodeValue(XmlNode parent, string nodeName)
@@ -42,7 +59,7 @@ public static class Utils
         using (HttpClient client = new())
         {
             var requestUri = "http://localhost:3000/api/predictTopic";
-            var requestBody = new { summary = summary };
+            var requestBody = new { summary };
             var content = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync(requestUri, content);
@@ -53,6 +70,26 @@ public static class Utils
 
             return result.topic;
         }
+    }
+
+    public static string ExtractTopicFromUrl(string url)
+    {
+        var patterns = new[]
+        {
+            @"https:\/\/www\.expressen\.se\/[^\/]+\/([^\/]+)\/[^\/]+\/?$",
+            @"https:\/\/www\.dn\.se\/([^\/]+)\/[^\/]+\/?$"
+        };
+
+        foreach (var pattern in patterns)
+        {
+            var match = Regex.Match(url, pattern, RegexOptions.IgnoreCase);
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+        }
+
+        return "Övrigt";
     }
 
     public static async Task<List<Article>> FetchRssNews(List<string> rssUris, HttpClient client)
@@ -77,13 +114,23 @@ public static class Utils
 
                 foreach (XmlNode item in items)
                 {
+                    var descriptionNode = item.SelectSingleNode("description");
+                    string description = descriptionNode?.InnerXml ?? string.Empty;
+
+                    string cleanedDescription = Regex.Replace(description, @"<img\s+[^>]*?>", "").Trim();
+                    cleanedDescription = Regex.Replace(cleanedDescription, @"<p>|</p>", "\n").Trim();
+                    cleanedDescription = Regex.Replace(cleanedDescription, @"<!\[CDATA\[|\]\]>", "").Trim();
+
+                    string link = Utils.GetNodeValue(item, "link");
+
                     var article = new Article
                     {
-                        Title = Utils.GetNodeValue(item, "title"),
-                        Link = Utils.GetNodeValue(item, "link"),
-                        Description = Utils.GetNodeValue(item, "description"),
-                        PubDate = Utils.GetNodeValue(item, "pubDate"),
-                        Img = Utils.ExtractImageUrl(item, namespaceManager)
+                        Title = GetNodeValue(item, "title"),
+                        Link = link,
+                        Description = cleanedDescription,
+                        PubDate = GetNodeValue(item, "pubDate"),
+                        Img = ExtractImageUrl(item, namespaceManager),
+                        Topic = ExtractTopicFromUrl(link)
                     };
 
                     articles.Add(article);

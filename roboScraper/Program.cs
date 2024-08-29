@@ -15,8 +15,8 @@ var database = new Database(connectionString);
 
 List<string> newsUris = new List<string>
 {
-    "https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/",
-    "http://www.dn.se/nyheter/m/rss/"
+    "http://www.dn.se/nyheter/m/rss/",
+    "https://feeds.expressen.se/nyheter/",
 };
 
 // main menu
@@ -26,13 +26,13 @@ WriteLine();
 while (true)
 {
     Console.WriteLine("*************************************************");
-    Console.WriteLine("* 1. Add articles to the database               *");
-    Console.WriteLine("* 2. Delete all articles from the database      *");
-    Console.WriteLine("* 3. (DEMO) Predict and update topics with AI   *");
-    Console.WriteLine("* 4. Exit                                       *");
+    Console.WriteLine("1. Add articles to the database               ");
+    Console.WriteLine("2. Delete all articles from the database      ");
+    Console.WriteLine("3. (DEMO) Predict and update topics with AI   ");
+    Console.WriteLine("4. Exit                                       ");
     Console.WriteLine("*************************************************");
     Console.WriteLine();
-    Console.Write("Please choose an option (1-4): ");
+    Console.Write("pick an option (1-4): ");
 
 
     string input = Console.ReadLine() ?? "";
