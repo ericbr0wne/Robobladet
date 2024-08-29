@@ -19,3 +19,18 @@ A news web app built with React and Express.js
 * cd roboScraper
 * dotnet build
 * dotnet run
+
+* ## Connect your database
+* Uses dependency "dotenv" to store connection string
+* Add file ".env" in root folder
+* Populate with connection string
+
+  Fomat in .env:
+  
+```
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+```
+  
