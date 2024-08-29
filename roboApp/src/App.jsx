@@ -11,6 +11,7 @@ import Creators from "./components/Creators";
 import "./App.css";
 import ThemeToggle from "./components/ThemeToggle";
 import "./index.css";
+import Categories from "./components/Categories";
 
 function App() {
   return (
@@ -23,9 +24,11 @@ function App() {
           <Route path="/" element={<ArticleList />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact-us" element={<Contact />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/about" element={<Creators />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/articles" element={<ArticleList />} />
         </Routes>
         <Robot />
       </Router>

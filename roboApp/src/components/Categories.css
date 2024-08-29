@@ -1,0 +1,16 @@
+.category-item {
+  list-style-type: none;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.category-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.category-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

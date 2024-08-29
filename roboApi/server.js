@@ -106,6 +106,12 @@ app.get("/api/articles", (req, res) => {
   });
 });
 
+app.get("/api/topics", (req, res) => {
+  db.query("select distinct topic from articles", (err, results) => {
+    res.json(results);
+  });
+});
+
 app.post("/api/predictTopic", async (req, res) => {
   const { summary } = req.body;
 
