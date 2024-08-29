@@ -6,5 +6,5 @@ public class Article
     public string? Link { get; set; }
     public string? Img { get; set; }
     public string PubDate { get; set; }
-    //public string? Topic { get; set; }
+    public string? Topic { get; set; }
 }
