@@ -5,22 +5,32 @@ import "./RegisterLogin.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // New loading state
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const response = await fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
-    const data = await response.json();
+    setIsLoading(true); // Set loading state
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      alert("Inloggningen lyckades");
-      navigate("/"); 
-    } else {
-      alert(data.message);
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        alert("Inloggningen lyckades");
+        navigate("/");
+      } else {
+        alert(data.message || "Login failed, please try again."); // More detailed message
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login. Please try again.");
+    } finally {
+      setIsLoading(false); // Reset loading state
     }
   };
 
@@ -35,6 +45,7 @@ const Login = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -43,9 +54,12 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
             />
           </div>
-          <button onClick={handleLogin}>Logga in</button>
+          <button onClick={handleLogin} disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Logga in"} 
+          </button>
           <p id="regLoginLink">
             Har du inget konto?
             <Link to={"/register"}> Skapa ett konto</Link>
