@@ -39,7 +39,6 @@ h1 {
   color: var(--text-color);
 }
 
-/* Navbar Styles */
 .robo-nav {
   background-color: var(--nav-background-color);
   padding: 1rem;

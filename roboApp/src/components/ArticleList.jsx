@@ -27,7 +27,7 @@ const ArticleList = () => {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Fetched articles data:", data); // Debugging line
+        console.log("Fetched articles data:", data);
         setArticles(data);
       } catch (error) {
         console.error("Error fetching articles:", error);
