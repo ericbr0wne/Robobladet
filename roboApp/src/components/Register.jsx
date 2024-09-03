@@ -5,9 +5,11 @@ import "./RegisterLogin.css";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // New loading state
   const navigate = useNavigate();
 
   const handleRegister = async () => {
+    setIsLoading(true); // Set loading state
     try {
       const response = await fetch("http://localhost:3000/api/register", {
         method: "POST",
@@ -20,11 +22,13 @@ const Register = () => {
 
       if (response.status === 201) {
         localStorage.setItem("userRegistered", "true");
-        navigate("/login"); // Corrected navigation
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error during registration:", error);
       alert("An error occurred during registration. Please try again.");
+    } finally {
+      setIsLoading(false); // Reset loading state
     }
   };
 
@@ -39,6 +43,7 @@ const Register = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -47,10 +52,11 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
             />
           </div>
-          <button type="button" onClick={handleRegister}>
-            Registera 
+          <button type="button" onClick={handleRegister} disabled={isLoading}>
+            {isLoading ? "Registering..." : "Registera"} 
           </button>
           <p id="regLoginLink">
             Har du redan ett konto?
