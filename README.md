@@ -2,6 +2,12 @@
 
 A news web app built with React, Express.js and C#/.NET
 
+Featuring 
+- fetching news from RSS feeds (c#)
+- updating database (c# console)
+- responsive frontend (react)
+- AI API to predict categories (c#, experimental) 
+
 ## RoboApp // Frontend
 
 * cd roboApp
